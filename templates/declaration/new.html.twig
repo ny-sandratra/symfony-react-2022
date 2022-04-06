@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Declaration{% endblock %}
+
+{% block body %}
+    <h1>Create new Declaration</h1>
+
+    {{ include('declaration/_form.html.twig') }}
+
+    <a href="{{ path('declaration_index') }}">back to list</a>
+{% endblock %}

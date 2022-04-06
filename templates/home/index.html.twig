@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %} {% block title %} Pateforme {% endblock %} {% block body %}
+<h1 class="diplay-1 text-center">Welcome to my website</h1>
+<a href="{{path('user_new') }}">S'inscrire</a>
+<a href="{{path('declaration_new') }}">Faire une déclaration</a>
+<a href="{{path('moto_new') }}">Catégories Moto</a>
+<a href="{{path('vehicule_new') }}">Catégories Vehicules</a>
+<a href="{{path('signaller_new') }}">Signaler une publication</a>
+<a href="{{path('autority')}}">Autorité</a> {% endblock %}

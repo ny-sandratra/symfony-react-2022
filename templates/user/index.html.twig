@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %} {% block title %}Utilisateur{% endblock %} {% block body %}
+<div class="container">
+    <h1 class="text-center">Listes des utilisateurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>FirstName</th>
+                <th>DateDeNaissance</th>
+                <th>LieuDeNaissance</th>
+                <th>Cin</th>
+                <th>Mail</th>
+                <th>Numéro</th>
+                <th>Address</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.dateDeNaissance ? user.dateDeNaissance|date('Y-m-d') : '' }}</td>
+                <td>{{ user.lieuDeNaissance }}</td>
+                <td>{{ user.cin }}</td>
+                <td>{{ user.mail }}</td>
+                <td>{{ user.numero }}</td>
+                <td>{{ user.address }}</td>
+                <td>
+                    <a href="{{ path('user_delete', {'id': user.id}) }}">delete</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_new') }}">Create new</a>
+</div>{% endblock %}

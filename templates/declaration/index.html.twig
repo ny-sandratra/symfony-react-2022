@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Declaration index{% endblock %}
+
+{% block body %}
+    <h1>Declaration index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateDePerte</th>
+                <th>LieuDePerte</th>
+                <th>Description</th>
+                <th>DateDePublication</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for declaration in declarations %}
+            <tr>
+                <td>{{ declaration.id }}</td>
+                <td>{{ declaration.dateDePerte ? declaration.dateDePerte|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ declaration.lieuDePerte }}</td>
+                <td>{{ declaration.description }}</td>
+                <td>{{ declaration.dateDePublication ? declaration.dateDePublication|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('declaration_show', {'id': declaration.id}) }}">show</a>
+                    <a href="{{ path('declaration_edit', {'id': declaration.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('declaration_new') }}">Create new</a>
+{% endblock %}

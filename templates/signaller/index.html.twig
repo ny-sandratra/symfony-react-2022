@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Signaller index{% endblock %}
+
+{% block body %}
+    <h1>Signaller index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenoms</th>
+                <th>Numero</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for signaller in signallers %}
+            <tr>
+                <td>{{ signaller.id }}</td>
+                <td>{{ signaller.nom }}</td>
+                <td>{{ signaller.prenoms }}</td>
+                <td>{{ signaller.numero }}</td>
+                <td>{{ signaller.email }}</td>
+                <td>
+                    <a href="{{ path('signaller_show', {'id': signaller.id}) }}">show</a>
+                    <a href="{{ path('signaller_edit', {'id': signaller.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('signaller_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Signaller{% endblock %}
+
+{% block body %}
+    <h1>Signaller</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ signaller.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ signaller.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenoms</th>
+                <td>{{ signaller.prenoms }}</td>
+            </tr>
+            <tr>
+                <th>Numero</th>
+                <td>{{ signaller.numero }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ signaller.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('signaller_index') }}">back to list</a>
+
+    <a href="{{ path('signaller_edit', {'id': signaller.id}) }}">edit</a>
+
+    {{ include('signaller/_delete_form.html.twig') }}
+{% endblock %}
